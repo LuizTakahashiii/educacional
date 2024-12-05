@@ -7,4 +7,4 @@ CREATE TABLE disciplinas (
     FOREIGN KEY (curso_id) REFERENCES cursos(id),
     FOREIGN KEY (professor_id) REFERENCES professores(id)
 
-);
+);      

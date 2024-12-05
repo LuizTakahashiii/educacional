@@ -14,6 +14,8 @@ public class NotaController {
     @Autowired
     private NotaRepository repository;
 
+    // **CRUD EXISTENTE**
+
     @GetMapping
     public List<Nota> findAll() {
         return repository.findAll();
@@ -49,5 +51,24 @@ public class NotaController {
                 .orElseThrow(() -> new IllegalArgumentException("Nota não encontrada"));
 
         repository.delete(nota);
+    }
+
+
+    //  boletim por aluno
+    @GetMapping("/boletim/{alunoId}")
+    public List<Nota> getBoletimPorAluno(@PathVariable Integer alunoId) {
+        return repository.findNotasByAlunoId(alunoId);
+    }
+
+    // média das notas por turma
+    @GetMapping("/desempenho/turma/{turmaId}")
+    public Double getMediaPorTurma(@PathVariable Integer turmaId) {
+        return repository.findMediaNotasByTurmaId(turmaId);
+    }
+
+    // notas por disciplina
+    @GetMapping("/desempenho/disciplina/{disciplinaId}")
+    public List<Nota> getNotasPorDisciplina(@PathVariable Integer disciplinaId) {
+        return repository.findNotasByDisciplinaId(disciplinaId);
     }
 }

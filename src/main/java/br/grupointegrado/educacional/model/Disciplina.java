@@ -17,6 +17,7 @@ public class Disciplina {
     private String codigo;
 
     @ManyToOne
+
     @JoinColumn(name = "curso_id", nullable = false)
     private Curso curso;
 
